@@ -6,8 +6,6 @@ import (
 	context "context"
 
 	grpc "google.golang.org/grpc"
-	codes "google.golang.org/grpc/codes"
-	status "google.golang.org/grpc/status"
 )
 
 // This is a compile-time assertion to ensure that this generated file
@@ -26,16 +24,13 @@ type demoClient struct {
 }
 
 func NewDemoClient(cc grpc.ClientConnInterface) DemoClient {
-	return &demoClient{cc}
+	_ = "STUB: not implemented"
+	return *new(DemoClient)
 }
 
 func (c *demoClient) Ping(ctx context.Context, in *PingRequest, opts ...grpc.CallOption) (*PongResponse, error) {
-	out := new(PongResponse)
-	err := c.cc.Invoke(ctx, "/demo.Demo/Ping", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // DemoServer is the server API for Demo service.
@@ -51,37 +46,28 @@ type UnimplementedDemoServer struct {
 }
 
 func (UnimplementedDemoServer) Ping(context.Context, *PingRequest) (*PongResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Ping not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
-func (UnimplementedDemoServer) mustEmbedUnimplementedDemoServer() {}
 
-// UnsafeDemoServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to DemoServer will
-// result in compilation errors.
+func (UnimplementedDemoServer) mustEmbedUnimplementedDemoServer() {
+	_ = "STUB: not implemented"
+
+	// UnsafeDemoServer may be embedded to opt out of forward compatibility for this service.
+	// Use of this interface is not recommended, as added methods to DemoServer will
+	// result in compilation errors.
+	return
+}
+
 type UnsafeDemoServer interface {
 	mustEmbedUnimplementedDemoServer()
 }
 
-func RegisterDemoServer(s *grpc.Server, srv DemoServer) {
-	s.RegisterService(&_Demo_serviceDesc, srv)
-}
+func RegisterDemoServer(s *grpc.Server, srv DemoServer) { _ = "STUB: not implemented"; return }
 
 func _Demo_Ping_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(PingRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(DemoServer).Ping(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/demo.Demo/Ping",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(DemoServer).Ping(ctx, req.(*PingRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 var _Demo_serviceDesc = grpc.ServiceDesc{

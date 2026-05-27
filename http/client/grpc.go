@@ -18,27 +18,18 @@ type grpcClientConnBuilder struct {
 
 // GRPCClientConnBuilder creates a fresh gRPC connection for client builder
 func GRPCClientConnBuilder() client.GRPCClientConnectionBuilder {
-	return &grpcClientConnBuilder{
-		ll: list.New(),
-	}
+	_ = "STUB: not implemented"
+	return *new(client.GRPCClientConnectionBuilder)
 }
 
 func (g *grpcClientConnBuilder) AddOptions(opts ...grpc.DialOption) client.GRPCClientConnectionBuilder {
-	g.ll.PushBack(func(cfg *grpcClientConnOptions) {
-		cfg.options = append(cfg.options, opts...)
-	})
-	return g
+	_ = "STUB: not implemented"
+	return *new(client.GRPCClientConnectionBuilder)
 }
 
 func (g *grpcClientConnBuilder) Build() client.GRPCClientConnectionWrapper {
-	var cfg = new(grpcClientConnOptions)
-	for e := g.ll.Front(); e != nil; e = e.Next() {
-		f := e.Value.(func(connOptions *grpcClientConnOptions))
-		f(cfg)
-	}
-	return &grpcClientConnImpl{
-		options: cfg,
-	}
+	_ = "STUB: not implemented"
+	return *new(client.GRPCClientConnectionWrapper)
 }
 
 type grpcClientConnImpl struct {
@@ -46,9 +37,6 @@ type grpcClientConnImpl struct {
 }
 
 func (g *grpcClientConnImpl) Dial(ctx context.Context, target string, extraOptions ...grpc.DialOption) (grpc.ClientConnInterface, error) {
-	var allOptions = append(g.options.options, extraOptions...)
-	if ctx == nil {
-		ctx = context.Background()
-	}
-	return grpc.DialContext(ctx, target, allOptions...)
+	_ = "STUB: not implemented"
+	return *new(grpc.ClientConnInterface), nil
 }

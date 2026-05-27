@@ -3,17 +3,13 @@ package providers
 import (
 	"github.com/go-masonry/mortar/http/server"
 	"github.com/go-masonry/mortar/middleware/interceptors/trace"
-	"github.com/go-masonry/mortar/providers/groups"
 	"go.uber.org/fx"
 )
 
 // TracerGRPCClientInterceptorFxOption adds grpc trace client interceptor to the graph
 func TracerGRPCClientInterceptorFxOption() fx.Option {
-	return fx.Provide(
-		fx.Annotated{
-			Group:  groups.GRPCUnaryClientInterceptors,
-			Target: trace.TracerGRPCClientInterceptor,
-		})
+	_ = "STUB: not implemented"
+	return *new(fx.Option)
 }
 
 // TracerGRPCClientInterceptor is a constructor that creates gRPC Unary Client Interceptor
@@ -27,11 +23,8 @@ var TracerGRPCClientInterceptor = trace.TracerGRPCClientInterceptor
 
 // TracerRESTClientInterceptorFxOption adds REST trace client interceptor to the graph
 func TracerRESTClientInterceptorFxOption() fx.Option {
-	return fx.Provide(
-		fx.Annotated{
-			Group:  groups.RESTClientInterceptors,
-			Target: trace.TracerRESTClientInterceptor,
-		})
+	_ = "STUB: not implemented"
+	return *new(fx.Option)
 }
 
 // TracerRESTClientInterceptor is a constructor that creates REST HTTP Client Interceptor
@@ -45,10 +38,8 @@ var TracerRESTClientInterceptor = trace.TracerRESTClientInterceptor
 
 // GRPCTracingUnaryServerInterceptorFxOption adds grpc trace unary server interceptor to the graph
 func GRPCTracingUnaryServerInterceptorFxOption() fx.Option {
-	return fx.Provide(fx.Annotated{
-		Group:  groups.UnaryServerInterceptors,
-		Target: trace.GRPCTracingUnaryServerInterceptor,
-	})
+	_ = "STUB: not implemented"
+	return *new(fx.Option)
 }
 
 // GRPCTracingUnaryServerInterceptor is a constructor that creates gRPC Unary Server Interceptor
@@ -63,11 +54,8 @@ var GRPCTracingUnaryServerInterceptor = trace.GRPCTracingUnaryServerInterceptor
 // GRPCGatewayMetadataTraceCarrierFxOption adds GRPCGatewayMuxOption that will inject trace into the context.Context
 // Make sure to understand what it does by reading server.MetadataTraceCarrierOption code and explanation
 func GRPCGatewayMetadataTraceCarrierFxOption() fx.Option {
-	return fx.Provide(
-		fx.Annotated{
-			Group:  groups.GRPCGatewayMuxOptions,
-			Target: server.MetadataTraceCarrierOption,
-		})
+	_ = "STUB: not implemented"
+	return *new(fx.Option)
 }
 
 // MetadataTraceCarrierOption creates a special metadata.MD carrier for the tracer.

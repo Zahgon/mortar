@@ -2,7 +2,6 @@ package naive
 
 import (
 	"context"
-	"fmt"
 	"log"
 
 	logInt "github.com/go-masonry/mortar/interfaces/log"
@@ -17,76 +16,66 @@ type defaultLogger struct {
 	logger *log.Logger
 }
 
-func (d *defaultLogger) Level() logInt.Level {
-	return d.cfg.level
-}
+func (d *defaultLogger) Level() logInt.Level { _ = "STUB: not implemented"; return *new(logInt.Level) }
 
-func (d *defaultLogger) Implementation() interface{} {
-	return d.logger
-}
+func (d *defaultLogger) Implementation() interface{} { _ = "STUB: not implemented"; return nil }
 
 func (d *defaultLogger) Trace(ctx context.Context, format string, args ...interface{}) {
-	d.Custom(ctx, logInt.TraceLevel, noAdditionalFramesToSkip, format, args...)
+	_ = "STUB: not implemented"
+	return
 }
 
 func (d *defaultLogger) Debug(ctx context.Context, format string, args ...interface{}) {
-	d.Custom(ctx, logInt.DebugLevel, noAdditionalFramesToSkip, format, args...)
+	_ = "STUB: not implemented"
+	return
 }
 
 func (d *defaultLogger) Info(ctx context.Context, format string, args ...interface{}) {
-	d.Custom(ctx, logInt.InfoLevel, noAdditionalFramesToSkip, format, args...)
+	_ = "STUB: not implemented"
+	return
 }
 
 func (d *defaultLogger) Warn(ctx context.Context, format string, args ...interface{}) {
-	d.Custom(ctx, logInt.WarnLevel, noAdditionalFramesToSkip, format, args...)
+	_ = "STUB: not implemented"
+	return
 }
 
 func (d *defaultLogger) Error(ctx context.Context, format string, args ...interface{}) {
-	d.Custom(ctx, logInt.ErrorLevel, noAdditionalFramesToSkip, format, args...)
+	_ = "STUB: not implemented"
+	return
 }
 
 func (d *defaultLogger) Custom(ctx context.Context, level logInt.Level, skipAdditionalFrames int, format string, args ...interface{}) {
-	if d.cfg.level <= level {
-		d.log(skipAdditionalFrames, format, args...)
-	}
+	_ = "STUB: not implemented"
+	return
 }
 
 // WithError not supported
 func (d *defaultLogger) WithError(err error) logInt.Fields {
-	return d
+	_ = "STUB: not implemented"
+
+	// WithField not supported
+	return *new(logInt.Fields)
 }
 
-// WithField not supported
 func (d *defaultLogger) WithField(name string, value interface{}) logInt.Fields {
-	return d
+	_ = "STUB: not implemented"
+	return *new(logInt.Fields)
 }
 
 func (d *defaultLogger) Configuration() logInt.LoggerConfiguration {
-	return d
+	_ = "STUB: not implemented"
+	return *new(logInt.LoggerConfiguration)
 }
 
 func (d *defaultLogger) log(skipAdditionalFrames int, format string, args ...interface{}) {
-	skip := d.cfg.depth + skipAdditionalFrames
-	if len(args) > 0 {
-		d.logger.Output(skip, fmt.Sprintf(format, args...))
-	} else {
-		d.logger.Output(skip, format)
-	}
+	_ = "STUB: not implemented"
+	return
 }
 
 func newDefaultLogger(cfg *defaultConfig) logInt.Logger {
-	flags := log.LstdFlags
-	if cfg.excludeTime {
-		flags = 0
-	}
-	if cfg.includeCaller {
-		flags |= log.Llongfile
-	}
-	logger := log.New(cfg.writer, "", flags)
-	return &defaultLogger{
-		logger: logger,
-		cfg:    cfg,
-	}
+	_ = "STUB: not implemented"
+	return *new(logInt.Logger)
 }
 
 var _ logInt.Logger = (*defaultLogger)(nil)

@@ -1,7 +1,6 @@
 package partial
 
 import (
-	"github.com/go-masonry/mortar/http/client"
 	clientInt "github.com/go-masonry/mortar/interfaces/http/client"
 	"go.uber.org/fx"
 	"google.golang.org/grpc"
@@ -25,9 +24,8 @@ type httpClientBuilderDeps struct {
 // This function returns a closure that will always create a new builder. That way every usage can add different
 // interceptors without influencing others
 func HTTPClientBuilder(deps httpClientBuilderDeps) clientInt.NewHTTPClientBuilder {
-	return func() clientInt.HTTPClientBuilder {
-		return client.HTTPClientBuilder().AddInterceptors(deps.Interceptors...)
-	}
+	_ = "STUB: not implemented"
+	return *new(clientInt.NewHTTPClientBuilder)
 }
 
 // GRPC
@@ -40,6 +38,6 @@ type grpcClientConnectionBuilderDeps struct {
 // GRPCClientConnectionBuilder creates an injectable grpc.ClientConn that can be predefined with Interceptors
 // or/and additional options later
 func GRPCClientConnectionBuilder(deps grpcClientConnectionBuilderDeps) clientInt.GRPCClientConnectionBuilder {
-	interceptors := grpc.WithChainUnaryInterceptor(deps.Interceptors...)
-	return client.GRPCClientConnBuilder().AddOptions(interceptors)
+	_ = "STUB: not implemented"
+	return *new(clientInt.GRPCClientConnectionBuilder)
 }

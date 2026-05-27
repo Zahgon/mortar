@@ -2,7 +2,6 @@ package log
 
 import (
 	"context"
-	"strings"
 )
 
 //go:generate mockgen -source=interfaces.go -destination=mock/mock.go
@@ -23,36 +22,10 @@ const (
 	ErrorLevel
 )
 
-func (l Level) String() string {
-	switch l {
-	case ErrorLevel:
-		return "error"
-	case WarnLevel:
-		return "warn"
-	case InfoLevel:
-		return "info"
-	case DebugLevel:
-		return "debug"
-	default:
-		return "trace"
-	}
-}
+func (l Level) String() string { _ = "STUB: not implemented"; return "" }
 
 // ParseLevel tries to parse level from string, if unable to parse a Trace level will be returned as a default
-func ParseLevel(str string) Level {
-	switch strings.ToLower(str) {
-	case "error":
-		return ErrorLevel
-	case "warn":
-		return WarnLevel
-	case "info":
-		return InfoLevel
-	case "debug":
-		return DebugLevel
-	default:
-		return TraceLevel
-	}
-}
+func ParseLevel(str string) Level { _ = "STUB: not implemented"; return *new(Level) }
 
 // LoggerConfiguration get some of the logger configuration options and also the implementation
 type LoggerConfiguration interface {

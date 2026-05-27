@@ -17,7 +17,6 @@ import (
 	"github.com/grpc-ecosystem/grpc-gateway/v2/utilities"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
-	"google.golang.org/grpc/grpclog"
 	"google.golang.org/grpc/metadata"
 	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/proto"
@@ -36,35 +35,13 @@ var (
 )
 
 func request_Demo_Ping_0(ctx context.Context, marshaler runtime.Marshaler, client DemoClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq PingRequest
-	var metadata runtime.ServerMetadata
-
-	if err := req.ParseForm(); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_Demo_Ping_0); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-
-	msg, err := client.Ping(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
-	return msg, metadata, err
-
+	_ = "STUB: not implemented"
+	return *new(proto.Message), *new(runtime.ServerMetadata), nil
 }
 
 func local_request_Demo_Ping_0(ctx context.Context, marshaler runtime.Marshaler, server DemoServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq PingRequest
-	var metadata runtime.ServerMetadata
-
-	if err := req.ParseForm(); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_Demo_Ping_0); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-
-	msg, err := server.Ping(ctx, &protoReq)
-	return msg, metadata, err
-
+	_ = "STUB: not implemented"
+	return *new(proto.Message), *new(runtime.ServerMetadata), nil
 }
 
 // RegisterDemoHandlerServer registers the http handlers for service Demo to "mux".
@@ -72,62 +49,22 @@ func local_request_Demo_Ping_0(ctx context.Context, marshaler runtime.Marshaler,
 // StreamingRPC :currently unsupported pending https://github.com/grpc/grpc-go/issues/906.
 // Note that using this registration option will cause many gRPC library features to stop working. Consider using RegisterDemoHandlerFromEndpoint instead.
 func RegisterDemoHandlerServer(ctx context.Context, mux *runtime.ServeMux, server DemoServer) error {
-
-	mux.Handle("GET", pattern_Demo_Ping_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
-		ctx, cancel := context.WithCancel(req.Context())
-		defer cancel()
-		var stream runtime.ServerTransportStream
-		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/demo.Demo/Ping")
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-		resp, md, err := local_request_Demo_Ping_0(rctx, inboundMarshaler, server, req, pathParams)
-		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
-		ctx = runtime.NewServerMetadataContext(ctx, md)
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-
-		forward_Demo_Ping_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
-
-	})
-
+	_ = "STUB: not implemented"
 	return nil
 }
 
 // RegisterDemoHandlerFromEndpoint is same as RegisterDemoHandler but
 // automatically dials to "endpoint" and closes the connection when "ctx" gets done.
 func RegisterDemoHandlerFromEndpoint(ctx context.Context, mux *runtime.ServeMux, endpoint string, opts []grpc.DialOption) (err error) {
-	conn, err := grpc.Dial(endpoint, opts...)
-	if err != nil {
-		return err
-	}
-	defer func() {
-		if err != nil {
-			if cerr := conn.Close(); cerr != nil {
-				grpclog.Infof("Failed to close conn to %s: %v", endpoint, cerr)
-			}
-			return
-		}
-		go func() {
-			<-ctx.Done()
-			if cerr := conn.Close(); cerr != nil {
-				grpclog.Infof("Failed to close conn to %s: %v", endpoint, cerr)
-			}
-		}()
-	}()
-
-	return RegisterDemoHandler(ctx, mux, conn)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // RegisterDemoHandler registers the http handlers for service Demo to "mux".
 // The handlers forward requests to the grpc endpoint over "conn".
 func RegisterDemoHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.ClientConn) error {
-	return RegisterDemoHandlerClient(ctx, mux, NewDemoClient(conn))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // RegisterDemoHandlerClient registers the http handlers for service Demo
@@ -136,27 +73,7 @@ func RegisterDemoHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.
 // doesn't go through the normal gRPC flow (creating a gRPC client etc.) then it will be up to the passed in
 // "DemoClient" to call the correct interceptors.
 func RegisterDemoHandlerClient(ctx context.Context, mux *runtime.ServeMux, client DemoClient) error {
-
-	mux.Handle("GET", pattern_Demo_Ping_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
-		ctx, cancel := context.WithCancel(req.Context())
-		defer cancel()
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/demo.Demo/Ping")
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-		resp, md, err := request_Demo_Ping_0(rctx, inboundMarshaler, client, req, pathParams)
-		ctx = runtime.NewServerMetadataContext(ctx, md)
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-
-		forward_Demo_Ping_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
-
-	})
-
+	_ = "STUB: not implemented"
 	return nil
 }
 

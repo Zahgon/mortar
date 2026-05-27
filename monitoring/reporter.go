@@ -20,49 +20,49 @@ type mortarReporter struct {
 //   - Canary release https://martinfowler.com/bliki/CanaryRelease.html identifier
 //   - Authentication Token values, but avoid using high cardinality values such as UserID
 func newMortarReporter(cfg *monitorConfig) monitor.Reporter {
-	externalMetrics := cfg.reporter.Metrics()
-	return &mortarReporter{
-		externalMetrics: externalMetrics,
-		cfg:             cfg,
-		registry:        newRegistry(externalMetrics),
-	}
+	_ = "STUB: not implemented"
+	return *new(monitor.Reporter)
 }
 
-func (r *mortarReporter) Connect(ctx context.Context) error {
-	return r.cfg.reporter.Connect(ctx)
-}
+func (r *mortarReporter) Connect(ctx context.Context) error { _ = "STUB: not implemented"; return nil }
 
-func (r *mortarReporter) Close(ctx context.Context) error {
-	return r.cfg.reporter.Close(ctx)
-}
+func (r *mortarReporter) Close(ctx context.Context) error { _ = "STUB: not implemented"; return nil }
 
 func (r *mortarReporter) Metrics() monitor.Metrics {
-	return r
+	_ = "STUB: not implemented"
+
+	// Counter creates a counter with possible predefined tags
+	return *new(monitor.Metrics)
 }
 
-// Counter creates a counter with possible predefined tags
 func (r *mortarReporter) Counter(name string, desc string) monitor.TagsAwareCounter {
-	return newMetric(r.registry, r.cfg).WithTags(r.cfg.tags).Counter(name, desc)
+	_ = "STUB: not implemented"
+	return *new(monitor.TagsAwareCounter)
 }
 
 // Gauge creates a gauge with possible predefined tags
 func (r *mortarReporter) Gauge(name string, desc string) monitor.TagsAwareGauge {
-	return newMetric(r.registry, r.cfg).WithTags(r.cfg.tags).Gauge(name, desc)
+	_ = "STUB: not implemented"
+	return *new(monitor.TagsAwareGauge)
 }
 
 // Histogram creates a histogram with possible predefined tags
 func (r *mortarReporter) Histogram(name string, desc string, buckets monitor.Buckets) monitor.TagsAwareHistogram {
-	return newMetric(r.registry, r.cfg).WithTags(r.cfg.tags).Histogram(name, desc, buckets)
+	_ = "STUB: not implemented"
+	return *new(monitor.TagsAwareHistogram)
 }
 
 // Timer creates a timer with possible predefined tags
 func (r *mortarReporter) Timer(name string, desc string) monitor.TagsAwareTimer {
-	return newMetric(r.registry, r.cfg).WithTags(r.cfg.tags).Timer(name, desc)
+	_ = "STUB: not implemented"
+	return *new(monitor.TagsAwareTimer)
 }
 
 // WithTags sets custom tags to be included if possible in every Metric
 func (r *mortarReporter) WithTags(tags monitor.Tags) monitor.Metrics {
-	return newMetric(r.registry, r.cfg).
-		WithTags(r.cfg.tags). // first apply default tags
-		WithTags(tags)        // then apply custom ones
+	_ = "STUB: not implemented"
+	return *new(monitor.Metrics)
 }
+
+// first apply default tags
+// then apply custom ones

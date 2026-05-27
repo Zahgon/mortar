@@ -5,14 +5,11 @@ import (
 	"github.com/go-masonry/mortar/logger"
 	"github.com/go-masonry/mortar/middleware/context"
 	"github.com/go-masonry/mortar/middleware/interceptors/server"
-	"github.com/go-masonry/mortar/providers/groups"
 	"go.uber.org/fx"
 )
 
 // LoggerFxOption adds Default Logger to the graph
-func LoggerFxOption() fx.Option {
-	return fx.Provide(constructors.DefaultLogger)
-}
+func LoggerFxOption() fx.Option { _ = "STUB: not implemented"; return *new(fx.Option) }
 
 // DefaultLogger is a constructor that creates a default log.Logger based on provided log.Builder
 //
@@ -20,9 +17,7 @@ func LoggerFxOption() fx.Option {
 var DefaultLogger = constructors.DefaultLogger
 
 // FxEventLoggerOption add new Fx Event option to output fx events using structured logger
-func FxEventLoggerOption() fx.Option {
-	return fx.WithLogger(logger.CreateFxEventLogger)
-}
+func FxEventLoggerOption() fx.Option { _ = "STUB: not implemented"; return *new(fx.Option) }
 
 // CreateFxEventLogger is a constuctor that creates a custom fxevent.Logger
 //
@@ -33,10 +28,8 @@ var CreateFxEventLogger = logger.CreateFxEventLogger
 //
 // This one will be included during Logger build
 func LoggerGRPCIncomingContextExtractorFxOption() fx.Option {
-	return fx.Provide(fx.Annotated{
-		Group:  groups.LoggerContextExtractors,
-		Target: context.LoggerGRPCIncomingContextExtractor,
-	})
+	_ = "STUB: not implemented"
+	return *new(fx.Option)
 }
 
 // LoggerGRPCIncomingContextExtractor is a constructor that creates log.ContextExtractor.
@@ -49,12 +42,7 @@ func LoggerGRPCIncomingContextExtractorFxOption() fx.Option {
 var LoggerGRPCIncomingContextExtractor = context.LoggerGRPCIncomingContextExtractor
 
 // LoggerGRPCInterceptorFxOption adds Unary Server Interceptor that will log Request and Response if needed
-func LoggerGRPCInterceptorFxOption() fx.Option {
-	return fx.Provide(fx.Annotated{
-		Group:  groups.UnaryServerInterceptors,
-		Target: server.LoggerGRPCInterceptor,
-	})
-}
+func LoggerGRPCInterceptorFxOption() fx.Option { _ = "STUB: not implemented"; return *new(fx.Option) }
 
 // LoggerGRPCInterceptor is a constructor that creates gRPC Unary Server Interceptor.
 // This Interceptor will log gRPC calls with request and response if enabled.

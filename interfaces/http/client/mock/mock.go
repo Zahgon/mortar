@@ -7,7 +7,6 @@ package mock_client
 import (
 	context "context"
 	http "net/http"
-	reflect "reflect"
 
 	client "github.com/go-masonry/mortar/interfaces/http/client"
 	gomock "github.com/golang/mock/gomock"
@@ -27,60 +26,48 @@ type MockHTTPClientBuilderMockRecorder struct {
 
 // NewMockHTTPClientBuilder creates a new mock instance.
 func NewMockHTTPClientBuilder(ctrl *gomock.Controller) *MockHTTPClientBuilder {
-	mock := &MockHTTPClientBuilder{ctrl: ctrl}
-	mock.recorder = &MockHTTPClientBuilderMockRecorder{mock}
-	return mock
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockHTTPClientBuilder) EXPECT() *MockHTTPClientBuilderMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// AddInterceptors mocks base method.
+	return nil
 }
 
-// AddInterceptors mocks base method.
 func (m *MockHTTPClientBuilder) AddInterceptors(arg0 ...client.HTTPClientInterceptor) client.HTTPClientBuilder {
-	m.ctrl.T.Helper()
-	varargs := []interface{}{}
-	for _, a := range arg0 {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "AddInterceptors", varargs...)
-	ret0, _ := ret[0].(client.HTTPClientBuilder)
-	return ret0
+	_ = "STUB: not implemented"
+	return *new(client.HTTPClientBuilder)
 }
 
 // AddInterceptors indicates an expected call of AddInterceptors.
 func (mr *MockHTTPClientBuilderMockRecorder) AddInterceptors(arg0 ...interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "AddInterceptors", reflect.TypeOf((*MockHTTPClientBuilder)(nil).AddInterceptors), arg0...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Build mocks base method.
-func (m *MockHTTPClientBuilder) Build() *http.Client {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Build")
-	ret0, _ := ret[0].(*http.Client)
-	return ret0
-}
+func (m *MockHTTPClientBuilder) Build() *http.Client { _ = "STUB: not implemented"; return nil }
 
 // Build indicates an expected call of Build.
 func (mr *MockHTTPClientBuilderMockRecorder) Build() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Build", reflect.TypeOf((*MockHTTPClientBuilder)(nil).Build))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // WithPreconfiguredClient mocks base method.
 func (m *MockHTTPClientBuilder) WithPreconfiguredClient(arg0 *http.Client) client.HTTPClientBuilder {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "WithPreconfiguredClient", arg0)
-	ret0, _ := ret[0].(client.HTTPClientBuilder)
-	return ret0
+	_ = "STUB: not implemented"
+	return *new(client.HTTPClientBuilder)
 }
 
 // WithPreconfiguredClient indicates an expected call of WithPreconfiguredClient.
 func (mr *MockHTTPClientBuilderMockRecorder) WithPreconfiguredClient(arg0 interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "WithPreconfiguredClient", reflect.TypeOf((*MockHTTPClientBuilder)(nil).WithPreconfiguredClient), arg0)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // MockGRPCClientConnectionWrapper is a mock of GRPCClientConnectionWrapper interface.
@@ -96,34 +83,27 @@ type MockGRPCClientConnectionWrapperMockRecorder struct {
 
 // NewMockGRPCClientConnectionWrapper creates a new mock instance.
 func NewMockGRPCClientConnectionWrapper(ctrl *gomock.Controller) *MockGRPCClientConnectionWrapper {
-	mock := &MockGRPCClientConnectionWrapper{ctrl: ctrl}
-	mock.recorder = &MockGRPCClientConnectionWrapperMockRecorder{mock}
-	return mock
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockGRPCClientConnectionWrapper) EXPECT() *MockGRPCClientConnectionWrapperMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// Dial mocks base method.
+	return nil
 }
 
-// Dial mocks base method.
 func (m *MockGRPCClientConnectionWrapper) Dial(ctx context.Context, target string, extraOptions ...grpc.DialOption) (grpc.ClientConnInterface, error) {
-	m.ctrl.T.Helper()
-	varargs := []interface{}{ctx, target}
-	for _, a := range extraOptions {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "Dial", varargs...)
-	ret0, _ := ret[0].(grpc.ClientConnInterface)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return *new(grpc.ClientConnInterface), nil
 }
 
 // Dial indicates an expected call of Dial.
 func (mr *MockGRPCClientConnectionWrapperMockRecorder) Dial(ctx, target interface{}, extraOptions ...interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]interface{}{ctx, target}, extraOptions...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Dial", reflect.TypeOf((*MockGRPCClientConnectionWrapper)(nil).Dial), varargs...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // MockGRPCClientConnectionBuilder is a mock of GRPCClientConnectionBuilder interface.
@@ -139,44 +119,37 @@ type MockGRPCClientConnectionBuilderMockRecorder struct {
 
 // NewMockGRPCClientConnectionBuilder creates a new mock instance.
 func NewMockGRPCClientConnectionBuilder(ctrl *gomock.Controller) *MockGRPCClientConnectionBuilder {
-	mock := &MockGRPCClientConnectionBuilder{ctrl: ctrl}
-	mock.recorder = &MockGRPCClientConnectionBuilderMockRecorder{mock}
-	return mock
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockGRPCClientConnectionBuilder) EXPECT() *MockGRPCClientConnectionBuilderMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// AddOptions mocks base method.
+	return nil
 }
 
-// AddOptions mocks base method.
 func (m *MockGRPCClientConnectionBuilder) AddOptions(opts ...grpc.DialOption) client.GRPCClientConnectionBuilder {
-	m.ctrl.T.Helper()
-	varargs := []interface{}{}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "AddOptions", varargs...)
-	ret0, _ := ret[0].(client.GRPCClientConnectionBuilder)
-	return ret0
+	_ = "STUB: not implemented"
+	return *new(client.GRPCClientConnectionBuilder)
 }
 
 // AddOptions indicates an expected call of AddOptions.
 func (mr *MockGRPCClientConnectionBuilderMockRecorder) AddOptions(opts ...interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "AddOptions", reflect.TypeOf((*MockGRPCClientConnectionBuilder)(nil).AddOptions), opts...)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Build mocks base method.
 func (m *MockGRPCClientConnectionBuilder) Build() client.GRPCClientConnectionWrapper {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Build")
-	ret0, _ := ret[0].(client.GRPCClientConnectionWrapper)
-	return ret0
+	_ = "STUB: not implemented"
+	return *new(client.GRPCClientConnectionWrapper)
 }
 
 // Build indicates an expected call of Build.
 func (mr *MockGRPCClientConnectionBuilderMockRecorder) Build() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Build", reflect.TypeOf((*MockGRPCClientConnectionBuilder)(nil).Build))
+	_ = "STUB: not implemented"
+	return nil
 }

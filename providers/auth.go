@@ -6,9 +6,7 @@ import (
 )
 
 // JWTExtractorFxOption adds default JWT extractor from context.Context to the graph
-func JWTExtractorFxOption() fx.Option {
-	return fx.Provide(constructors.DefaultJWTTokenExtractor)
-}
+func JWTExtractorFxOption() fx.Option { _ = "STUB: not implemented"; return *new(fx.Option) }
 
 // JWTExtractor is a constructor for Default JWT Token Extractor
 //

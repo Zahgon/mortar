@@ -7,7 +7,6 @@ package mock_jwt
 import (
 	context "context"
 	base64 "encoding/base64"
-	reflect "reflect"
 
 	jwt "github.com/go-masonry/mortar/interfaces/auth/jwt"
 	gomock "github.com/golang/mock/gomock"
@@ -26,70 +25,63 @@ type MockExtractorBuilderMockRecorder struct {
 
 // NewMockExtractorBuilder creates a new mock instance.
 func NewMockExtractorBuilder(ctrl *gomock.Controller) *MockExtractorBuilder {
-	mock := &MockExtractorBuilder{ctrl: ctrl}
-	mock.recorder = &MockExtractorBuilderMockRecorder{mock}
-	return mock
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockExtractorBuilder) EXPECT() *MockExtractorBuilderMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// Build mocks base method.
+	return nil
 }
 
-// Build mocks base method.
 func (m *MockExtractorBuilder) Build() jwt.TokenExtractor {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Build")
-	ret0, _ := ret[0].(jwt.TokenExtractor)
-	return ret0
+	_ = "STUB: not implemented"
+	return *new(jwt.TokenExtractor)
 }
 
 // Build indicates an expected call of Build.
 func (mr *MockExtractorBuilderMockRecorder) Build() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Build", reflect.TypeOf((*MockExtractorBuilder)(nil).Build))
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // SetBase64Decoder mocks base method.
 func (m *MockExtractorBuilder) SetBase64Decoder(dec *base64.Encoding) jwt.ExtractorBuilder {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "SetBase64Decoder", dec)
-	ret0, _ := ret[0].(jwt.ExtractorBuilder)
-	return ret0
+	_ = "STUB: not implemented"
+	return *new(jwt.ExtractorBuilder)
 }
 
 // SetBase64Decoder indicates an expected call of SetBase64Decoder.
 func (mr *MockExtractorBuilderMockRecorder) SetBase64Decoder(dec interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetBase64Decoder", reflect.TypeOf((*MockExtractorBuilder)(nil).SetBase64Decoder), dec)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // SetContextExtractor mocks base method.
 func (m *MockExtractorBuilder) SetContextExtractor(extractor jwt.ContextExtractor) jwt.ExtractorBuilder {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "SetContextExtractor", extractor)
-	ret0, _ := ret[0].(jwt.ExtractorBuilder)
-	return ret0
+	_ = "STUB: not implemented"
+	return *new(jwt.ExtractorBuilder)
 }
 
 // SetContextExtractor indicates an expected call of SetContextExtractor.
 func (mr *MockExtractorBuilderMockRecorder) SetContextExtractor(extractor interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetContextExtractor", reflect.TypeOf((*MockExtractorBuilder)(nil).SetContextExtractor), extractor)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // SetDecoder mocks base method.
 func (m *MockExtractorBuilder) SetDecoder(dec jwt.JSONDecoder) jwt.ExtractorBuilder {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "SetDecoder", dec)
-	ret0, _ := ret[0].(jwt.ExtractorBuilder)
-	return ret0
+	_ = "STUB: not implemented"
+	return *new(jwt.ExtractorBuilder)
 }
 
 // SetDecoder indicates an expected call of SetDecoder.
 func (mr *MockExtractorBuilderMockRecorder) SetDecoder(dec interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetDecoder", reflect.TypeOf((*MockExtractorBuilder)(nil).SetDecoder), dec)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // MockTokenExtractor is a mock of TokenExtractor interface.
@@ -105,44 +97,39 @@ type MockTokenExtractorMockRecorder struct {
 
 // NewMockTokenExtractor creates a new mock instance.
 func NewMockTokenExtractor(ctrl *gomock.Controller) *MockTokenExtractor {
-	mock := &MockTokenExtractor{ctrl: ctrl}
-	mock.recorder = &MockTokenExtractorMockRecorder{mock}
-	return mock
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockTokenExtractor) EXPECT() *MockTokenExtractorMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// FromContext mocks base method.
+	return nil
 }
 
-// FromContext mocks base method.
 func (m *MockTokenExtractor) FromContext(ctx context.Context) (jwt.Token, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "FromContext", ctx)
-	ret0, _ := ret[0].(jwt.Token)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return *new(jwt.Token), nil
 }
 
 // FromContext indicates an expected call of FromContext.
 func (mr *MockTokenExtractorMockRecorder) FromContext(ctx interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "FromContext", reflect.TypeOf((*MockTokenExtractor)(nil).FromContext), ctx)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // FromString mocks base method.
 func (m *MockTokenExtractor) FromString(str string) (jwt.Token, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "FromString", str)
-	ret0, _ := ret[0].(jwt.Token)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return *new(jwt.Token), nil
 }
 
 // FromString indicates an expected call of FromString.
 func (mr *MockTokenExtractorMockRecorder) FromString(str interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "FromString", reflect.TypeOf((*MockTokenExtractor)(nil).FromString), str)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // MockToken is a mock of Token interface.
@@ -157,70 +144,41 @@ type MockTokenMockRecorder struct {
 }
 
 // NewMockToken creates a new mock instance.
-func NewMockToken(ctrl *gomock.Controller) *MockToken {
-	mock := &MockToken{ctrl: ctrl}
-	mock.recorder = &MockTokenMockRecorder{mock}
-	return mock
-}
+func NewMockToken(ctrl *gomock.Controller) *MockToken { _ = "STUB: not implemented"; return nil }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockToken) EXPECT() *MockTokenMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// Decode mocks base method.
+	return nil
 }
 
-// Decode mocks base method.
-func (m *MockToken) Decode(target interface{}) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Decode", target)
-	ret0, _ := ret[0].(error)
-	return ret0
-}
+func (m *MockToken) Decode(target interface{}) error { _ = "STUB: not implemented"; return nil }
 
 // Decode indicates an expected call of Decode.
 func (mr *MockTokenMockRecorder) Decode(target interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Decode", reflect.TypeOf((*MockToken)(nil).Decode), target)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Map mocks base method.
 func (m *MockToken) Map() (map[string]interface{}, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Map")
-	ret0, _ := ret[0].(map[string]interface{})
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // Map indicates an expected call of Map.
-func (mr *MockTokenMockRecorder) Map() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Map", reflect.TypeOf((*MockToken)(nil).Map))
-}
+func (mr *MockTokenMockRecorder) Map() *gomock.Call { _ = "STUB: not implemented"; return nil }
 
 // Payload mocks base method.
-func (m *MockToken) Payload() []byte {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Payload")
-	ret0, _ := ret[0].([]byte)
-	return ret0
-}
+func (m *MockToken) Payload() []byte { _ = "STUB: not implemented"; return nil }
 
 // Payload indicates an expected call of Payload.
-func (mr *MockTokenMockRecorder) Payload() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Payload", reflect.TypeOf((*MockToken)(nil).Payload))
-}
+func (mr *MockTokenMockRecorder) Payload() *gomock.Call { _ = "STUB: not implemented"; return nil }
 
 // Raw mocks base method.
-func (m *MockToken) Raw() string {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Raw")
-	ret0, _ := ret[0].(string)
-	return ret0
-}
+func (m *MockToken) Raw() string { _ = "STUB: not implemented"; return "" }
 
 // Raw indicates an expected call of Raw.
-func (mr *MockTokenMockRecorder) Raw() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Raw", reflect.TypeOf((*MockToken)(nil).Raw))
-}
+func (mr *MockTokenMockRecorder) Raw() *gomock.Call { _ = "STUB: not implemented"; return nil }

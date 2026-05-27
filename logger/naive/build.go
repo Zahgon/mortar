@@ -3,7 +3,6 @@ package naive
 import (
 	"container/list"
 	"io"
-	"os"
 
 	logInt "github.com/go-masonry/mortar/interfaces/log"
 )
@@ -34,60 +33,38 @@ type NativeLogBuilder interface {
 }
 
 // Builder creates a fresh default Logger builder, this will eventually build a std logger wrapper without structured logging
-func Builder() NativeLogBuilder {
-	return &defaultBuilder{
-		ll: list.New(),
-	}
-}
+func Builder() NativeLogBuilder { _ = "STUB: not implemented"; return *new(NativeLogBuilder) }
 
 func (d *defaultBuilder) SetWriter(writer io.Writer) NativeLogBuilder {
-	d.ll.PushBack(func(cfg *defaultConfig) {
-		cfg.writer = writer
-	})
-	return d
+	_ = "STUB: not implemented"
+	return *new(NativeLogBuilder)
 }
 
 func (d *defaultBuilder) ExcludeTime() NativeLogBuilder {
-	d.ll.PushBack(func(cfg *defaultConfig) {
-		cfg.excludeTime = true
-	})
-	return d
+	_ = "STUB: not implemented"
+	return *new(NativeLogBuilder)
 }
 
 func (d *defaultBuilder) IncludeCaller() NativeLogBuilder {
-	d.ll.PushBack(func(cfg *defaultConfig) {
-		cfg.includeCaller = true
-	})
-	return d
+	_ = "STUB: not implemented"
+	return *new(NativeLogBuilder)
 }
 
 func (d *defaultBuilder) IncrementSkipFrames(inc int) logInt.Builder {
-	d.ll.PushBack(func(cfg *defaultConfig) {
-		cfg.depth += inc
-	})
-	return d
+	_ = "STUB: not implemented"
+	return *new(logInt.Builder)
 }
 
 func (d *defaultBuilder) SetLevel(level logInt.Level) logInt.Builder {
-	d.ll.PushBack(func(cfg *defaultConfig) {
-		cfg.level = level
-	})
-	return d
+	_ = "STUB: not implemented"
+	return *new(logInt.Builder)
 }
 
 func (d *defaultBuilder) Build() logInt.Logger {
-	cfg := &defaultConfig{
-		writer:        os.Stderr,
-		level:         logInt.TraceLevel,
-		depth:         defaultSkipDepth, // 2 is used within the log package
-		excludeTime:   false,
-		includeCaller: false,
-	}
-	for e := d.ll.Front(); e != nil; e = e.Next() {
-		f := e.Value.(func(config *defaultConfig))
-		f(cfg)
-	}
-	return newDefaultLogger(cfg)
+	_ = "STUB: not implemented"
+	return *new(logInt.Logger)
 }
+
+// 2 is used within the log package
 
 var _ logInt.Builder = (*defaultBuilder)(nil)

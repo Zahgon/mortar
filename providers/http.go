@@ -5,15 +5,12 @@ import (
 	"github.com/go-masonry/mortar/constructors/partial"
 	"github.com/go-masonry/mortar/middleware/grpcgateway"
 	"github.com/go-masonry/mortar/middleware/interceptors/client"
-	"github.com/go-masonry/mortar/providers/groups"
 	"go.uber.org/fx"
 )
 
 // BuildMortarWebServiceFxOption creates the entire dependency graph
 // and registers all provided fx.LifeCycle hooks
-func BuildMortarWebServiceFxOption() fx.Option {
-	return fx.Invoke(constructors.Service)
-}
+func BuildMortarWebServiceFxOption() fx.Option { _ = "STUB: not implemented"; return *new(fx.Option) }
 
 // BuildMortarWebService is a constructor that creates and registers fx.LifeCycle hooks for Mortar web services
 //
@@ -22,9 +19,7 @@ var BuildMortarWebService = constructors.Service
 
 // HTTPServerBuilderFxOption adds Default Http Server builder which later injected to the Service Invoke option
 // by calling BuildMortarWebServiceFxOption fx.Invoke option to the graph
-func HTTPServerBuilderFxOption() fx.Option {
-	return fx.Provide(partial.HTTPServerBuilder)
-}
+func HTTPServerBuilderFxOption() fx.Option { _ = "STUB: not implemented"; return *new(fx.Option) }
 
 // HTTPServerBuilder is a constructor that creates a partial Mortars HTTP Server Builder
 //
@@ -32,12 +27,7 @@ func HTTPServerBuilderFxOption() fx.Option {
 var HTTPServerBuilder = partial.HTTPServerBuilder
 
 // HTTPClientBuildersFxOption adds both (GRPC, REST) partial http clients to the graph
-func HTTPClientBuildersFxOption() fx.Option {
-	return fx.Provide(
-		partial.HTTPClientBuilder,
-		partial.GRPCClientConnectionBuilder,
-	)
-}
+func HTTPClientBuildersFxOption() fx.Option { _ = "STUB: not implemented"; return *new(fx.Option) }
 
 // HTTPClientBuilder is a constructor that creates HTTP Client builder
 //
@@ -51,11 +41,8 @@ var GRPCClientConnectionBuilder = partial.GRPCClientConnectionBuilder
 
 // CopyGRPCHeadersClientInterceptorFxOption adds grpc Client Interceptor that copies values from grpc Incoming to Outgoing metadata
 func CopyGRPCHeadersClientInterceptorFxOption() fx.Option {
-	return fx.Provide(
-		fx.Annotated{
-			Group:  groups.GRPCUnaryClientInterceptors,
-			Target: client.CopyGRPCHeadersClientInterceptor,
-		})
+	_ = "STUB: not implemented"
+	return *new(fx.Option)
 }
 
 // CopyGRPCHeadersClientInterceptor is a constructor that creates gRPC Unary Client Interceptor
@@ -72,11 +59,8 @@ var CopyGRPCHeadersClientInterceptor = client.CopyGRPCHeadersClientInterceptor
 //
 // For Example: "authorization" header containing user token
 func CopyGRPCHeadersHTTPClientInterceptorFxOption() fx.Option {
-	return fx.Provide(
-		fx.Annotated{
-			Group:  groups.RESTClientInterceptors,
-			Target: client.CopyGRPCHeadersHTTPClientInterceptor,
-		})
+	_ = "STUB: not implemented"
+	return *new(fx.Option)
 }
 
 // CopyGRPCHeadersHTTPClientInterceptor is a constructor that creates REST Client Interceptor
@@ -90,11 +74,8 @@ var CopyGRPCHeadersHTTPClientInterceptor = client.CopyGRPCHeadersHTTPClientInter
 // DumpRESTClientInterceptorFxOption usefull when you want to log what is actually sent to the external HTTP server
 // and what was returned.
 func DumpRESTClientInterceptorFxOption() fx.Option {
-	return fx.Provide(
-		fx.Annotated{
-			Group:  groups.RESTClientInterceptors,
-			Target: client.DumpRESTClientInterceptor,
-		})
+	_ = "STUB: not implemented"
+	return *new(fx.Option)
 }
 
 // DumpRESTClientInterceptor is a constructor that creates REST Client Interceptor
@@ -107,11 +88,8 @@ var DumpRESTClientInterceptor = client.DumpRESTClientInterceptor
 
 // MonitorGRPCClientCallsInterceptorFxOption usefull when you want to monitor all your unary gRPC Client calls
 func MonitorGRPCClientCallsInterceptorFxOption() fx.Option {
-	return fx.Provide(
-		fx.Annotated{
-			Group:  groups.GRPCUnaryClientInterceptors,
-			Target: client.MonitorGRPCClientCallsInterceptor,
-		})
+	_ = "STUB: not implemented"
+	return *new(fx.Option)
 }
 
 // MonitorGRPCClientCallsInterceptor is a constructor that creates Unary gRPC Client Interceptor
@@ -124,11 +102,8 @@ var MonitorGRPCClientCallsInterceptor = client.MonitorGRPCClientCallsInterceptor
 
 // MonitorRESTClientCallsInterceptorFxOption usefull when you want to monitor all your REST Client calls
 func MonitorRESTClientCallsInterceptorFxOption() fx.Option {
-	return fx.Provide(
-		fx.Annotated{
-			Group:  groups.RESTClientInterceptors,
-			Target: client.MonitorRESTClientCallsInterceptor,
-		})
+	_ = "STUB: not implemented"
+	return *new(fx.Option)
 }
 
 // MonitorRESTClientCallsInterceptor is a constructor that creates REST Client Interceptor
@@ -143,11 +118,8 @@ var MonitorRESTClientCallsInterceptor = client.MonitorRESTClientCallsInterceptor
 // that maps incoming HTTP Headers to gRPC Context by checking if they match a list of prefixes.
 // List of prefixes is controlled by config key: `mortar.middleware.map.httpHeaders`
 func MapHTTPHeadersToClientMetadataMuxOptionFxOption() fx.Option {
-	return fx.Provide(
-		fx.Annotated{
-			Group:  groups.GRPCGatewayMuxOptions,
-			Target: grpcgateway.MapHTTPHeadersToClientMetadataMuxOption,
-		})
+	_ = "STUB: not implemented"
+	return *new(fx.Option)
 }
 
 // MapHTTPHeadersToClientMetadataMuxOption is a Grpc Gateway server mux option

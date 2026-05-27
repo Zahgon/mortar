@@ -7,7 +7,6 @@
 package health
 
 import (
-	reflect "reflect"
 	sync "sync"
 
 	_ "google.golang.org/genproto/googleapis/api/annotations"
@@ -28,37 +27,19 @@ type HealthCheckRequest struct {
 	unknownFields protoimpl.UnknownFields
 }
 
-func (x *HealthCheckRequest) Reset() {
-	*x = HealthCheckRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_http_server_health_health_proto_msgTypes[0]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *HealthCheckRequest) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *HealthCheckRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *HealthCheckRequest) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*HealthCheckRequest) ProtoMessage() {}
+func (*HealthCheckRequest) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *HealthCheckRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_http_server_health_health_proto_msgTypes[0]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use HealthCheckRequest.ProtoReflect.Descriptor instead.
-func (*HealthCheckRequest) Descriptor() ([]byte, []int) {
-	return file_http_server_health_health_proto_rawDescGZIP(), []int{0}
-}
+func (*HealthCheckRequest) Descriptor() ([]byte, []int) { _ = "STUB: not implemented"; return nil, nil }
 
 type HealthCheckResponse struct {
 	state         protoimpl.MessageState
@@ -66,36 +47,21 @@ type HealthCheckResponse struct {
 	unknownFields protoimpl.UnknownFields
 }
 
-func (x *HealthCheckResponse) Reset() {
-	*x = HealthCheckResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_http_server_health_health_proto_msgTypes[1]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
+func (x *HealthCheckResponse) Reset() { _ = "STUB: not implemented"; return }
 
-func (x *HealthCheckResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
+func (x *HealthCheckResponse) String() string { _ = "STUB: not implemented"; return "" }
 
-func (*HealthCheckResponse) ProtoMessage() {}
+func (*HealthCheckResponse) ProtoMessage() { _ = "STUB: not implemented"; return }
 
 func (x *HealthCheckResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_http_server_health_health_proto_msgTypes[1]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
+	_ = "STUB: not implemented"
+	return *new(protoreflect.Message)
 }
 
 // Deprecated: Use HealthCheckResponse.ProtoReflect.Descriptor instead.
 func (*HealthCheckResponse) Descriptor() ([]byte, []int) {
-	return file_http_server_health_health_proto_rawDescGZIP(), []int{1}
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 var File_http_server_health_health_proto protoreflect.FileDescriptor
@@ -127,10 +93,8 @@ var (
 )
 
 func file_http_server_health_health_proto_rawDescGZIP() []byte {
-	file_http_server_health_health_proto_rawDescOnce.Do(func() {
-		file_http_server_health_health_proto_rawDescData = protoimpl.X.CompressGZIP(file_http_server_health_health_proto_rawDescData)
-	})
-	return file_http_server_health_health_proto_rawDescData
+	_ = "STUB: not implemented"
+	return nil
 }
 
 var file_http_server_health_health_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
@@ -148,53 +112,5 @@ var file_http_server_health_health_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for field type_name
 }
 
-func init() { file_http_server_health_health_proto_init() }
-func file_http_server_health_health_proto_init() {
-	if File_http_server_health_health_proto != nil {
-		return
-	}
-	if !protoimpl.UnsafeEnabled {
-		file_http_server_health_health_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*HealthCheckRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_http_server_health_health_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*HealthCheckResponse); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-	}
-	type x struct{}
-	out := protoimpl.TypeBuilder{
-		File: protoimpl.DescBuilder{
-			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: file_http_server_health_health_proto_rawDesc,
-			NumEnums:      0,
-			NumMessages:   2,
-			NumExtensions: 0,
-			NumServices:   1,
-		},
-		GoTypes:           file_http_server_health_health_proto_goTypes,
-		DependencyIndexes: file_http_server_health_health_proto_depIdxs,
-		MessageInfos:      file_http_server_health_health_proto_msgTypes,
-	}.Build()
-	File_http_server_health_health_proto = out.File
-	file_http_server_health_health_proto_rawDesc = nil
-	file_http_server_health_health_proto_goTypes = nil
-	file_http_server_health_health_proto_depIdxs = nil
-}
+func init()                                      { file_http_server_health_health_proto_init() }
+func file_http_server_health_health_proto_init() { _ = "STUB: not implemented"; return }

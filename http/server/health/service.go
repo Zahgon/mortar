@@ -13,19 +13,17 @@ type healthService struct {
 
 // RegisterInternalGRPCGatewayHandler grpc-gateway health handler
 func RegisterInternalGRPCGatewayHandler(mux *runtime.ServeMux, endpoint string) error {
-	return RegisterHealthHandlerFromEndpoint(context.Background(), mux, endpoint, []grpc.DialOption{grpc.WithInsecure()})
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // RegisterInternalHealthService grpc server health api registration
-func RegisterInternalHealthService(srv *grpc.Server) {
-	RegisterHealthServer(srv, ImplementedHealthService())
-}
+func RegisterInternalHealthService(srv *grpc.Server) { _ = "STUB: not implemented"; return }
 
 // ImplementedHealthService internal health service
-func ImplementedHealthService() HealthServer {
-	return &healthService{}
-}
+func ImplementedHealthService() HealthServer { _ = "STUB: not implemented"; return *new(HealthServer) }
 
 func (*healthService) Check(context.Context, *HealthCheckRequest) (*HealthCheckResponse, error) {
-	return new(HealthCheckResponse), nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }

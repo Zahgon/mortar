@@ -1,7 +1,6 @@
 package mortar
 
 import (
-	"fmt"
 	"os"
 	"time"
 )
@@ -45,38 +44,16 @@ type Information struct {
 
 // GetBuildInformation returns this service build information
 func GetBuildInformation(includeExplanations ...bool) (info Information) {
-	info.GitCommit = gitCommit
-	info.Version = version
-	info.BuildTag = buildTag
-	info.InitTime = initTime
-	info.UpTime = JSONDuration(time.Since(initTime))
-	info.BuildTime = time.Time{} // Zero
-	info.Hostname = hostname
-	if len(buildTimestamp) != 0 {
-		// try to parse
-		if t, err := time.Parse(time.RFC3339, buildTimestamp); err == nil {
-			info.BuildTime = t
-		}
-	}
-
-	if len(includeExplanations) > 0 && includeExplanations[0] {
-		if len(gitCommit) == 0 {
-			info.GitCommit = "wasn't provided during build"
-		}
-		if len(version) == 0 {
-			info.Version = "wasn't provided during build"
-		}
-		if len(buildTag) == 0 {
-			info.BuildTag = "wasn't provided during build"
-		}
-	}
-	return
+	_ = "STUB: not implemented"
+	return *new(Information)
 }
+
+// Zero
+
+// try to parse
 
 // JSONDuration is an alias to time.Duration for Json marshaling
 type JSONDuration time.Duration
 
 // MarshalJSON for JsonDuration is a helper function to better marshal time.Duration
-func (jd JSONDuration) MarshalJSON() ([]byte, error) {
-	return []byte(fmt.Sprintf(`"%s"`, time.Duration(jd))), nil
-}
+func (jd JSONDuration) MarshalJSON() ([]byte, error) { _ = "STUB: not implemented"; return nil, nil }

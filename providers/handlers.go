@@ -2,17 +2,11 @@ package providers
 
 import (
 	"github.com/go-masonry/mortar/handlers"
-	"github.com/go-masonry/mortar/providers/groups"
 	"go.uber.org/fx"
 )
 
 // InternalDebugHandlersFxOption adds Internal Debug Handlers to the graph
-func InternalDebugHandlersFxOption() fx.Option {
-	return fx.Provide(fx.Annotated{
-		Group:  groups.InternalHTTPHandlers + ",flatten",
-		Target: handlers.InternalDebugHandlers,
-	})
-}
+func InternalDebugHandlersFxOption() fx.Option { _ = "STUB: not implemented"; return *new(fx.Option) }
 
 // InternalDebugHandlers is a constructor that creates Internal Debug HTTP Handlers
 //
@@ -24,11 +18,8 @@ var InternalDebugHandlers = handlers.InternalDebugHandlers
 
 // InternalProfileHandlerFunctionsFxOption adds Internal Profiler Handler to the graph
 func InternalProfileHandlerFunctionsFxOption() fx.Option {
-	return fx.Provide(
-		fx.Annotated{
-			Group:  groups.InternalHTTPHandlerFunctions + ",flatten",
-			Target: handlers.InternalProfileHandlerFunctions,
-		})
+	_ = "STUB: not implemented"
+	return *new(fx.Option)
 }
 
 // InternalProfileHandlerFunctions is a constructor that creates Internal Profile HTTP Handlers
@@ -44,13 +35,7 @@ var InternalProfileHandlerFunctions = handlers.InternalProfileHandlerFunctions
 // Adds these endpoint on Internal web service
 //   - /self/build
 //   - /self/config
-func InternalSelfHandlersFxOption() fx.Option {
-	return fx.Provide(
-		fx.Annotated{
-			Group:  groups.InternalHTTPHandlers + ",flatten",
-			Target: handlers.SelfHandlers,
-		})
-}
+func InternalSelfHandlersFxOption() fx.Option { _ = "STUB: not implemented"; return *new(fx.Option) }
 
 // SelfHandlers is a constructor that creates Internal Self HTTP Handlers
 //

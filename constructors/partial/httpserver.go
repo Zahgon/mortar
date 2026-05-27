@@ -1,13 +1,9 @@
 package partial
 
 import (
-	"fmt"
 	"net/http"
 
-	"github.com/go-masonry/mortar/http/server"
-	"github.com/go-masonry/mortar/http/server/health"
 	"github.com/go-masonry/mortar/interfaces/cfg"
-	confkeys "github.com/go-masonry/mortar/interfaces/cfg/keys"
 	serverInt "github.com/go-masonry/mortar/interfaces/http/server"
 	"github.com/go-masonry/mortar/interfaces/log"
 	"github.com/go-masonry/mortar/interfaces/monitor"
@@ -84,91 +80,33 @@ type httpServerDeps struct {
 // It uses some default assumptions and configurations, which are mostly good.
 // However, if you need to customize your configuration it's better to build yours from scratch
 func HTTPServerBuilder(deps httpServerDeps) serverInt.GRPCWebServiceBuilder {
-	builder := server.Builder().SetPanicHandler(deps.panicHandler).SetLogger(deps.Logger.Debug)
-	host := deps.Config.Get(confkeys.Host).String()
-	// GRPC port
-	if grpcPort := deps.Config.Get(confkeys.ExternalGRPCPort); grpcPort.IsSet() {
-		builder = builder.ListenOn(fmt.Sprintf("%s:%d", host, grpcPort.Int()))
-	}
-	// GRPC unary server interceptors
-	if len(deps.UnaryInterceptors) > 0 {
-		interceptorsOption := grpc.ChainUnaryInterceptor(deps.UnaryInterceptors...)
-		builder = builder.AddGRPCServerOptions(interceptorsOption)
-	}
-	// GRPC stream server interceptors
-	if len(deps.StreamInterceptors) > 0 {
-		interceptorsOption := grpc.ChainStreamInterceptor(deps.StreamInterceptors...)
-		builder = builder.AddGRPCServerOptions(interceptorsOption)
-	}
-	builder = deps.buildExternalAPI(builder)
-	return deps.buildInternalAPI(builder)
+	_ = "STUB: not implemented"
+	return *new(serverInt.GRPCWebServiceBuilder)
 }
+
+// GRPC port
+
+// GRPC unary server interceptors
+
+// GRPC stream server interceptors
 
 func (deps httpServerDeps) buildExternalAPI(builder serverInt.GRPCWebServiceBuilder) serverInt.GRPCWebServiceBuilder {
-	if len(deps.GRPCServerAPIs) > 0 {
-		builder = builder.RegisterGRPCAPIs(deps.GRPCServerAPIs...) // register grpc APIs
-	}
-	// add GRPC Gateway on top and expose on external REST Port
-	host := deps.Config.Get(confkeys.Host).String()
-	externalRESTPort := deps.Config.Get(confkeys.ExternalRESTPort)
-	if externalRESTPort.IsSet() && (len(deps.ExternalHTTPHandlerFunctions) > 0 || len(deps.ExternalHTTPHandlers) > 0 || len(deps.GRPCGatewayGeneratedHandlers) > 0) {
-		restBuilder := builder.AddRESTServerConfiguration().
-			ListenOn(fmt.Sprintf("%s:%d", host, externalRESTPort.Int()))
-
-		for _, handlerPair := range deps.ExternalHTTPHandlers {
-			restBuilder = restBuilder.AddHandler(handlerPair.Pattern, handlerPair.Handler)
-		}
-		for _, handlerFuncPair := range deps.ExternalHTTPHandlerFunctions {
-			restBuilder = restBuilder.AddHandlerFunc(handlerFuncPair.Pattern, handlerFuncPair.HandlerFunc)
-		}
-		if len(deps.ExternalHTTPInterceptors) > 0 {
-			restBuilder = restBuilder.AddGRPCGatewayInterceptors(deps.ExternalHTTPInterceptors...)
-		}
-		if len(deps.GRPCGatewayGeneratedHandlers) > 0 {
-			restBuilder = restBuilder.AddGRPCGatewayOptions(deps.GRPCGatewayMuxOptions...).
-				RegisterGRPCGatewayHandlers(deps.GRPCGatewayGeneratedHandlers...)
-		}
-		builder = restBuilder.BuildRESTPart()
-
-	}
-	return builder
+	_ = "STUB: not implemented"
+	return *new(serverInt.GRPCWebServiceBuilder)
 }
+
+// register grpc APIs
+
+// add GRPC Gateway on top and expose on external REST Port
 
 func (deps httpServerDeps) buildInternalAPI(builder serverInt.GRPCWebServiceBuilder) serverInt.GRPCWebServiceBuilder {
-	builder = builder.RegisterGRPCAPIs(health.RegisterInternalHealthService) // add internal GRPC health endpoint
-	// Internal
-	host := deps.Config.Get(confkeys.Host).String()
-	internalPort := deps.Config.Get(confkeys.InternalRESTPort)
-	includeInternalREST := internalPort.IsSet() && (len(deps.InternalHTTPHandlerFunctions) > 0 || len(deps.InternalHTTPHandlers) > 0)
-	if includeInternalREST {
-		restBuilder := builder.
-			AddRESTServerConfiguration().
-			ListenOn(fmt.Sprintf("%s:%d", host, internalPort.Int()))
-		for _, handlerPair := range deps.InternalHTTPHandlers {
-			restBuilder = restBuilder.AddHandler(handlerPair.Pattern, handlerPair.Handler)
-		}
-		for _, handlerFuncPair := range deps.InternalHTTPHandlerFunctions {
-			restBuilder = restBuilder.AddHandlerFunc(handlerFuncPair.Pattern, handlerFuncPair.HandlerFunc)
-		}
-		if len(deps.InternalHTTPInterceptors) > 0 {
-			restBuilder = restBuilder.AddGRPCGatewayInterceptors(deps.InternalHTTPInterceptors...)
-		}
-		restBuilder = restBuilder.RegisterGRPCGatewayHandlers(health.RegisterInternalGRPCGatewayHandler) // Health
-		builder = restBuilder.BuildRESTPart()
-	}
-	return builder
+	_ = "STUB: not implemented"
+	return *new(serverInt.GRPCWebServiceBuilder)
 }
 
-func (deps httpServerDeps) panicHandler(r interface{}) error {
-	if deps.Metrics != nil {
-		deps.Metrics.Counter(PanicHandlerCounter, "Count gRPC panic recoveries").Inc()
-	}
-	switch t := r.(type) {
-	case string, fmt.Stringer:
-		return fmt.Errorf("panic handled, %s", t)
-	case error:
-		return fmt.Errorf("panic handled, %w", t)
-	default:
-		return fmt.Errorf("panic handled, %v", t)
-	}
-}
+// add internal GRPC health endpoint
+// Internal
+
+// Health
+
+func (deps httpServerDeps) panicHandler(r interface{}) error { _ = "STUB: not implemented"; return nil }

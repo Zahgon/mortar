@@ -2,7 +2,6 @@ package monitoring
 
 import (
 	"container/list"
-	"log"
 
 	"github.com/go-masonry/mortar/interfaces/monitor"
 )
@@ -31,51 +30,28 @@ type wrapperBuilder struct {
 }
 
 // Builder creates a WrapperBuilder
-func Builder() WrapperBuilder {
-	return &wrapperBuilder{
-		ll: list.New(),
-	}
-}
+func Builder() WrapperBuilder { _ = "STUB: not implemented"; return *new(WrapperBuilder) }
 
 func (b *wrapperBuilder) SetTags(tags monitor.Tags) WrapperBuilder {
-	b.ll.PushBack(func(cfg *monitorConfig) {
-		if tags != nil {
-			cfg.tags = tags // make sure tags are always empty, not nil
-		}
-	})
-	return b
+	_ = "STUB: not implemented"
+	return *new(WrapperBuilder)
 }
 
+// make sure tags are always empty, not nil
+
 func (b *wrapperBuilder) AddExtractors(extractors ...monitor.ContextExtractor) WrapperBuilder {
-	b.ll.PushBack(func(cfg *monitorConfig) {
-		cfg.extractors = append(cfg.extractors, extractors...)
-	})
-	return b
+	_ = "STUB: not implemented"
+	return *new(WrapperBuilder)
 }
 
 func (b *wrapperBuilder) DoOnError(onError func(error)) WrapperBuilder {
-	b.ll.PushBack(func(cfg *monitorConfig) {
-		cfg.onError = onError
-	})
-	return b
+	_ = "STUB: not implemented"
+	return *new(WrapperBuilder)
 }
 
 func (b *wrapperBuilder) Build(bricksBuilder monitor.Builder) monitor.Reporter {
-	cfg := new(monitorConfig)
-	for e := b.ll.Front(); e != nil; e = e.Next() {
-		f := e.Value.(func(*monitorConfig))
-		f(cfg)
-	}
-	if cfg.onError == nil {
-		cfg.onError = func(err error) {
-			log.Printf("WARNING: monitoring error, %v", err)
-		}
-	}
-	if cfg.tags == nil {
-		cfg.tags = monitor.Tags{}
-	}
-	cfg.reporter = bricksBuilder.Build()
-	return newMortarReporter(cfg)
+	_ = "STUB: not implemented"
+	return *new(monitor.Reporter)
 }
 
 var _ WrapperBuilder = (*wrapperBuilder)(nil)

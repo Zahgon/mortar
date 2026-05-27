@@ -22,45 +22,53 @@ type loggerWrapper struct {
 //
 //	This constructor will call builder.IncrementSkipFrames to peel additional layer of itself.
 func CreateMortarLogger(builder log.Builder, contextExtractors ...log.ContextExtractor) log.Logger {
-	logger := builder.IncrementSkipFrames(compensateMortarLoggerWrapper).Build() // add 1
-	return &loggerWrapper{
-		contextExtractors: contextExtractors,
-		logger:            logger,
-	}
+	_ = "STUB: not implemented"
+	return *new(log.Logger)
 }
 
+// add 1
+
 func (l *loggerWrapper) Trace(ctx context.Context, format string, args ...interface{}) {
-	newEntry(l.contextExtractors, l.logger, false).Trace(ctx, format, args...)
+	_ = "STUB: not implemented"
+	return
 }
 
 func (l *loggerWrapper) Debug(ctx context.Context, format string, args ...interface{}) {
-	newEntry(l.contextExtractors, l.logger, false).Debug(ctx, format, args...)
+	_ = "STUB: not implemented"
+	return
 }
 
 func (l *loggerWrapper) Info(ctx context.Context, format string, args ...interface{}) {
-	newEntry(l.contextExtractors, l.logger, false).Info(ctx, format, args...)
+	_ = "STUB: not implemented"
+	return
 }
 
 func (l *loggerWrapper) Warn(ctx context.Context, format string, args ...interface{}) {
-	newEntry(l.contextExtractors, l.logger, false).Warn(ctx, format, args...)
+	_ = "STUB: not implemented"
+	return
 }
 
 func (l *loggerWrapper) Error(ctx context.Context, format string, args ...interface{}) {
-	newEntry(l.contextExtractors, l.logger, false).Error(ctx, format, args...)
+	_ = "STUB: not implemented"
+	return
 }
 
 func (l *loggerWrapper) Custom(ctx context.Context, level log.Level, skipAdditionalFrames int, format string, args ...interface{}) {
-	newEntry(l.contextExtractors, l.logger, false).Custom(ctx, level, skipAdditionalFrames, format, args...)
+	_ = "STUB: not implemented"
+	return
 }
 
 func (l *loggerWrapper) WithError(err error) log.Fields {
-	return newEntry(l.contextExtractors, l.logger, true).WithError(err)
+	_ = "STUB: not implemented"
+	return *new(log.Fields)
 }
 
 func (l *loggerWrapper) WithField(name string, value interface{}) log.Fields {
-	return newEntry(l.contextExtractors, l.logger, true).WithField(name, value)
+	_ = "STUB: not implemented"
+	return *new(log.Fields)
 }
 
 func (l *loggerWrapper) Configuration() log.LoggerConfiguration {
-	return l.logger.Configuration()
+	_ = "STUB: not implemented"
+	return *new(log.LoggerConfiguration)
 }

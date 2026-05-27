@@ -17,26 +17,18 @@ type counter struct {
 	extractors    []monitor.ContextExtractor
 }
 
-func (c *counter) Inc() {
-	if counter, err := c.bricksCounter.WithTags(c.tags); c.shouldLogMetric(err) {
-		counter.Inc()
-	}
-}
+func (c *counter) Inc() { _ = "STUB: not implemented"; return }
 
-func (c *counter) Add(v float64) {
-	if counter, err := c.bricksCounter.WithTags(c.tags); c.shouldLogMetric(err) {
-		counter.Add(v)
-	}
-}
+func (c *counter) Add(v float64) { _ = "STUB: not implemented"; return }
 
 func (c *counter) WithTags(tags monitor.Tags) monitor.TagsAwareCounter {
-	c.withTags(tags)
-	return c
+	_ = "STUB: not implemented"
+	return *new(monitor.TagsAwareCounter)
 }
 
 func (c *counter) WithContext(ctx context.Context) monitor.TagsAwareCounter {
-	c.withContext(ctx, c.extractors)
-	return c
+	_ = "STUB: not implemented"
+	return *new(monitor.TagsAwareCounter)
 }
 
 // *******************************************************************
@@ -49,41 +41,25 @@ type gauge struct {
 }
 
 // Set sets Gauge value
-func (g *gauge) Set(v float64) {
-	if gauge, err := g.bricksGauge.WithTags(g.tags); g.shouldLogMetric(err) {
-		gauge.Set(v)
-	}
-}
+func (g *gauge) Set(v float64) { _ = "STUB: not implemented"; return }
 
 // Add adds (or subtracts if negative) from previously set value
-func (g *gauge) Add(v float64) {
-	if gauge, err := g.bricksGauge.WithTags(g.tags); g.shouldLogMetric(err) {
-		gauge.Add(v)
-	}
-}
+func (g *gauge) Add(v float64) { _ = "STUB: not implemented"; return }
 
 // Inc adds 1
-func (g *gauge) Inc() {
-	if gauge, err := g.bricksGauge.WithTags(g.tags); g.shouldLogMetric(err) {
-		gauge.Inc()
-	}
-}
+func (g *gauge) Inc() { _ = "STUB: not implemented"; return }
 
 // Dec adds -1
-func (g *gauge) Dec() {
-	if gauge, err := g.bricksGauge.WithTags(g.tags); g.shouldLogMetric(err) {
-		gauge.Dec()
-	}
-}
+func (g *gauge) Dec() { _ = "STUB: not implemented"; return }
 
 func (g *gauge) WithTags(tags monitor.Tags) monitor.TagsAwareGauge {
-	g.withTags(tags)
-	return g
+	_ = "STUB: not implemented"
+	return *new(monitor.TagsAwareGauge)
 }
 
 func (g *gauge) WithContext(ctx context.Context) monitor.TagsAwareGauge {
-	g.withContext(ctx, g.extractors)
-	return g
+	_ = "STUB: not implemented"
+	return *new(monitor.TagsAwareGauge)
 }
 
 // *******************************************************************
@@ -96,20 +72,16 @@ type histogram struct {
 }
 
 // Record value
-func (h *histogram) Record(v float64) {
-	if histogram, err := h.bricksHistogram.WithTags(h.tags); h.shouldLogMetric(err) {
-		histogram.Record(v)
-	}
-}
+func (h *histogram) Record(v float64) { _ = "STUB: not implemented"; return }
 
 func (h *histogram) WithTags(tags monitor.Tags) monitor.TagsAwareHistogram {
-	h.withTags(tags)
-	return h
+	_ = "STUB: not implemented"
+	return *new(monitor.TagsAwareHistogram)
 }
 
 func (h *histogram) WithContext(ctx context.Context) monitor.TagsAwareHistogram {
-	h.withContext(ctx, h.extractors)
-	return h
+	_ = "STUB: not implemented"
+	return *new(monitor.TagsAwareHistogram)
 }
 
 // *******************************************************************
@@ -123,20 +95,16 @@ type timer struct {
 
 // Record uses Histogram to record timed duration
 // Since Histogram accepts float64 we will take the d.Seconds() which returns float64
-func (t *timer) Record(d time.Duration) {
-	if timer, err := t.bricksTimer.WithTags(t.tags); t.shouldLogMetric(err) {
-		timer.Record(d)
-	}
-}
+func (t *timer) Record(d time.Duration) { _ = "STUB: not implemented"; return }
 
 func (t *timer) WithTags(tags monitor.Tags) monitor.TagsAwareTimer {
-	t.withTags(tags)
-	return t
+	_ = "STUB: not implemented"
+	return *new(monitor.TagsAwareTimer)
 }
 
 func (t *timer) WithContext(ctx context.Context) monitor.TagsAwareTimer {
-	t.withContext(ctx, t.extractors)
-	return t
+	_ = "STUB: not implemented"
+	return *new(monitor.TagsAwareTimer)
 }
 
 // *******************************************************************
@@ -149,66 +117,33 @@ type tagsMetric struct {
 	copied  bool
 }
 
-func (tm *tagsMetric) withTags(tags monitor.Tags) {
-	tm.Lock()
-	defer tm.Unlock()
-	if !tm.copied {
-		var tagsCopy = monitor.Tags{}
-		for k, v := range tm.tags {
-			tagsCopy[k] = v
-		}
-		tm.tags = tagsCopy
-		tm.copied = true
-	}
-	for k, v := range tags {
-		tm.tags[k] = v
-	}
-}
+func (tm *tagsMetric) withTags(tags monitor.Tags) { _ = "STUB: not implemented"; return }
 
 func (tm *tagsMetric) withContext(ctx context.Context, extractors []monitor.ContextExtractor) {
-	for _, extractor := range extractors {
-		extractedTags := extractor(ctx)
-		tm.withTags(extractedTags)
-	}
+	_ = "STUB: not implemented"
+	return
 }
 
-func (tm *tagsMetric) shouldLogMetric(err error) bool {
-	if err != nil {
-		tm.onError(err)
-	}
-	return err == nil
-}
+func (tm *tagsMetric) shouldLogMetric(err error) bool { _ = "STUB: not implemented"; return false }
 
 // Metric Constructors
 
 func newCounterWithTags(bricksCounter monitor.BricksCounter, predefinedTags monitor.Tags, extractors []monitor.ContextExtractor, onError func(error)) monitor.TagsAwareCounter {
-	return &counter{
-		tagsMetric:    &tagsMetric{tags: predefinedTags, onError: onError},
-		bricksCounter: bricksCounter,
-		extractors:    extractors,
-	}
+	_ = "STUB: not implemented"
+	return *new(monitor.TagsAwareCounter)
 }
 
 func newGaugeWithTags(bricksGauge monitor.BricksGauge, predefinedTags monitor.Tags, extractors []monitor.ContextExtractor, onError func(error)) monitor.TagsAwareGauge {
-	return &gauge{
-		tagsMetric:  &tagsMetric{tags: predefinedTags, onError: onError},
-		bricksGauge: bricksGauge,
-		extractors:  extractors,
-	}
+	_ = "STUB: not implemented"
+	return *new(monitor.TagsAwareGauge)
 }
 
 func newHistogramWithTags(bricksHistogram monitor.BricksHistogram, predefinedTags monitor.Tags, extractors []monitor.ContextExtractor, onError func(error)) monitor.TagsAwareHistogram {
-	return &histogram{
-		tagsMetric:      &tagsMetric{tags: predefinedTags, onError: onError},
-		bricksHistogram: bricksHistogram,
-		extractors:      extractors,
-	}
+	_ = "STUB: not implemented"
+	return *new(monitor.TagsAwareHistogram)
 }
 
 func newTimerWithTags(bricksTimer monitor.BricksTimer, predefinedTags monitor.Tags, extractors []monitor.ContextExtractor, onError func(error)) monitor.TagsAwareTimer {
-	return &timer{
-		tagsMetric:  &tagsMetric{tags: predefinedTags, onError: onError},
-		bricksTimer: bricksTimer,
-		extractors:  extractors,
-	}
+	_ = "STUB: not implemented"
+	return *new(monitor.TagsAwareTimer)
 }

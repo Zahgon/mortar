@@ -6,8 +6,6 @@ import (
 	context "context"
 
 	grpc "google.golang.org/grpc"
-	codes "google.golang.org/grpc/codes"
-	status "google.golang.org/grpc/status"
 )
 
 // This is a compile-time assertion to ensure that this generated file
@@ -26,16 +24,13 @@ type healthClient struct {
 }
 
 func NewHealthClient(cc grpc.ClientConnInterface) HealthClient {
-	return &healthClient{cc}
+	_ = "STUB: not implemented"
+	return *new(HealthClient)
 }
 
 func (c *healthClient) Check(ctx context.Context, in *HealthCheckRequest, opts ...grpc.CallOption) (*HealthCheckResponse, error) {
-	out := new(HealthCheckResponse)
-	err := c.cc.Invoke(ctx, "/mortar.health.v1.Health/Check", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 // HealthServer is the server API for Health service.
@@ -51,37 +46,28 @@ type UnimplementedHealthServer struct {
 }
 
 func (UnimplementedHealthServer) Check(context.Context, *HealthCheckRequest) (*HealthCheckResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Check not implemented")
+	_ = "STUB: not implemented"
+	return nil, nil
 }
-func (UnimplementedHealthServer) mustEmbedUnimplementedHealthServer() {}
 
-// UnsafeHealthServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to HealthServer will
-// result in compilation errors.
+func (UnimplementedHealthServer) mustEmbedUnimplementedHealthServer() {
+	_ = "STUB: not implemented"
+
+	// UnsafeHealthServer may be embedded to opt out of forward compatibility for this service.
+	// Use of this interface is not recommended, as added methods to HealthServer will
+	// result in compilation errors.
+	return
+}
+
 type UnsafeHealthServer interface {
 	mustEmbedUnimplementedHealthServer()
 }
 
-func RegisterHealthServer(s *grpc.Server, srv HealthServer) {
-	s.RegisterService(&_Health_serviceDesc, srv)
-}
+func RegisterHealthServer(s *grpc.Server, srv HealthServer) { _ = "STUB: not implemented"; return }
 
 func _Health_Check_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(HealthCheckRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(HealthServer).Check(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/mortar.health.v1.Health/Check",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(HealthServer).Check(ctx, req.(*HealthCheckRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	_ = "STUB: not implemented"
+	return nil, nil
 }
 
 var _Health_serviceDesc = grpc.ServiceDesc{

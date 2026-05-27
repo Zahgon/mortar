@@ -1,7 +1,6 @@
 package monitoring
 
 import (
-	"fmt"
 	"time"
 
 	"github.com/go-masonry/mortar/interfaces/monitor"
@@ -18,16 +17,13 @@ type noopCounter struct {
 }
 
 func (n *noopCounter) WithTags(tags map[string]string) (monitor.Counter, error) {
-	return n, nil
+	_ = "STUB: not implemented"
+	return *new(monitor.Counter), nil
 }
 
 func newNoopCounter(name, desc string, err error, onError func(error)) monitor.BricksCounter {
-	return &noopCounter{&noop{
-		err:     err,
-		onError: onError,
-		name:    name,
-		desc:    desc,
-	}}
+	_ = "STUB: not implemented"
+	return *new(monitor.BricksCounter)
 }
 
 type noopGauge struct {
@@ -35,16 +31,13 @@ type noopGauge struct {
 }
 
 func (n *noopGauge) WithTags(tags map[string]string) (monitor.Gauge, error) {
-	return n, nil
+	_ = "STUB: not implemented"
+	return *new(monitor.Gauge), nil
 }
 
 func newNoopGauge(name, desc string, err error, onError func(error)) monitor.BricksGauge {
-	return &noopGauge{&noop{
-		err:     err,
-		onError: onError,
-		name:    name,
-		desc:    desc,
-	}}
+	_ = "STUB: not implemented"
+	return *new(monitor.BricksGauge)
 }
 
 type noopHistogram struct {
@@ -52,16 +45,13 @@ type noopHistogram struct {
 }
 
 func (n *noopHistogram) WithTags(tags map[string]string) (monitor.Histogram, error) {
-	return n, nil
+	_ = "STUB: not implemented"
+	return *new(monitor.Histogram), nil
 }
 
 func newNoopHistogram(name, desc string, err error, onError func(error)) monitor.BricksHistogram {
-	return &noopHistogram{&noop{
-		err:     err,
-		onError: onError,
-		name:    name,
-		desc:    desc,
-	}}
+	_ = "STUB: not implemented"
+	return *new(monitor.BricksHistogram)
 }
 
 type noopTimer struct {
@@ -69,49 +59,46 @@ type noopTimer struct {
 }
 
 func (n *noopTimer) WithTags(tags map[string]string) (monitor.Timer, error) {
-	return n, nil
+	_ = "STUB: not implemented"
+	return *new(monitor.Timer), nil
 }
 
-func (n *noopTimer) Record(d time.Duration) {
-	n.noop.Record(d.Seconds())
-}
+func (n *noopTimer) Record(d time.Duration) { _ = "STUB: not implemented"; return }
 
 func newNoopTimer(name, desc string, err error, onError func(error)) monitor.BricksTimer {
-	return &noopTimer{&noop{
-		err:     err,
-		onError: onError,
-		name:    name,
-		desc:    desc,
-	}}
+	_ = "STUB: not implemented"
+	return *new(monitor.BricksTimer)
 }
 
 // Inc increments the counter by 1
 func (n *noop) Inc() {
-	n.do()
+	_ = "STUB: not implemented"
+
+	// Add adds the given value to the counter, negative values are not advised
+	return
 }
 
-// Add adds the given value to the counter, negative values are not advised
 func (n *noop) Add(v float64) {
-	n.do()
+	_ = "STUB: not implemented"
+
+	// Record value
+	return
 }
 
-// Record value
 func (n *noop) Record(v float64) {
-	n.do()
+	_ = "STUB: not implemented"
+
+	// Set sets Gauge value
+	return
 }
 
-// Set sets Gauge value
 func (n *noop) Set(v float64) {
-	n.do()
+	_ = "STUB: not implemented"
+
+	// Dec adds -1
+	return
 }
 
-// Dec adds -1
-func (n *noop) Dec() {
-	n.do()
-}
+func (n *noop) Dec() { _ = "STUB: not implemented"; return }
 
-func (n *noop) do() {
-	n.onError(
-		fmt.Errorf("still trying to use failed metric %s:%s, %w", n.name, n.desc, n.err),
-	)
-}
+func (n *noop) do() { _ = "STUB: not implemented"; return }

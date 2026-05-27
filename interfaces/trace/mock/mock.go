@@ -6,7 +6,6 @@ package mock_trace
 
 import (
 	context "context"
-	reflect "reflect"
 
 	gomock "github.com/golang/mock/gomock"
 	opentracing "github.com/opentracing/opentracing-go"
@@ -25,54 +24,40 @@ type MockOpenTracerMockRecorder struct {
 
 // NewMockOpenTracer creates a new mock instance.
 func NewMockOpenTracer(ctrl *gomock.Controller) *MockOpenTracer {
-	mock := &MockOpenTracer{ctrl: ctrl}
-	mock.recorder = &MockOpenTracerMockRecorder{mock}
-	return mock
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockOpenTracer) EXPECT() *MockOpenTracerMockRecorder {
-	return m.recorder
+	_ = "STUB: not implemented"
+
+	// Close mocks base method.
+	return nil
 }
 
-// Close mocks base method.
-func (m *MockOpenTracer) Close(ctx context.Context) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Close", ctx)
-	ret0, _ := ret[0].(error)
-	return ret0
-}
+func (m *MockOpenTracer) Close(ctx context.Context) error { _ = "STUB: not implemented"; return nil }
 
 // Close indicates an expected call of Close.
 func (mr *MockOpenTracerMockRecorder) Close(ctx interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Close", reflect.TypeOf((*MockOpenTracer)(nil).Close), ctx)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Connect mocks base method.
-func (m *MockOpenTracer) Connect(ctx context.Context) error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Connect", ctx)
-	ret0, _ := ret[0].(error)
-	return ret0
-}
+func (m *MockOpenTracer) Connect(ctx context.Context) error { _ = "STUB: not implemented"; return nil }
 
 // Connect indicates an expected call of Connect.
 func (mr *MockOpenTracerMockRecorder) Connect(ctx interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Connect", reflect.TypeOf((*MockOpenTracer)(nil).Connect), ctx)
+	_ = "STUB: not implemented"
+	return nil
 }
 
 // Tracer mocks base method.
 func (m *MockOpenTracer) Tracer() opentracing.Tracer {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Tracer")
-	ret0, _ := ret[0].(opentracing.Tracer)
-	return ret0
+	_ = "STUB: not implemented"
+	return *new(opentracing.Tracer)
 }
 
 // Tracer indicates an expected call of Tracer.
-func (mr *MockOpenTracerMockRecorder) Tracer() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Tracer", reflect.TypeOf((*MockOpenTracer)(nil).Tracer))
-}
+func (mr *MockOpenTracerMockRecorder) Tracer() *gomock.Call { _ = "STUB: not implemented"; return nil }

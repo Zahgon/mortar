@@ -2,10 +2,7 @@ package jwt
 
 import (
 	"container/list"
-	"context"
 	"encoding/base64"
-	"encoding/json"
-	"fmt"
 
 	"github.com/go-masonry/mortar/interfaces/auth/jwt"
 )
@@ -32,49 +29,24 @@ type builder struct {
 }
 
 // Builder creates a fresh instance of Extractor Builder
-func Builder() ExtractorBuilder {
-	return &builder{
-		ll: list.New(),
-	}
-}
+func Builder() ExtractorBuilder { _ = "STUB: not implemented"; return *new(ExtractorBuilder) }
 
 func (b *builder) SetDecoder(dec JSONDecoder) ExtractorBuilder {
-	b.ll.PushBack(func(cfg *extractorConfig) {
-		cfg.jsonDecoder = dec
-	})
-	return b
+	_ = "STUB: not implemented"
+	return *new(ExtractorBuilder)
 }
 
 func (b *builder) SetContextExtractor(extractor jwt.ContextExtractor) ExtractorBuilder {
-	b.ll.PushBack(func(cfg *extractorConfig) {
-		cfg.contextExtractor = extractor
-	})
-	return b
+	_ = "STUB: not implemented"
+	return *new(ExtractorBuilder)
 }
 
 func (b *builder) SetBase64Decoder(dec *base64.Encoding) ExtractorBuilder {
-	b.ll.PushBack(func(cfg *extractorConfig) {
-		cfg.base64Enc = dec
-	})
-	return b
+	_ = "STUB: not implemented"
+	return *new(ExtractorBuilder)
 }
 
 func (b *builder) Build() jwt.TokenExtractor {
-	var cfg = new(extractorConfig)
-	for e := b.ll.Front(); e != nil; e = e.Next() {
-		f := e.Value.(func(config *extractorConfig))
-		f(cfg)
-	}
-	if cfg.base64Enc == nil {
-		cfg.base64Enc = base64.RawURLEncoding
-	}
-	if cfg.jsonDecoder == nil {
-		cfg.jsonDecoder = json.Unmarshal
-	}
-	if cfg.contextExtractor == nil {
-		cfg.contextExtractor = func(ctx context.Context) (string, error) {
-			return "", fmt.Errorf("no context extractor provided")
-		}
-	}
-	return newTokenExtractor(cfg)
+	_ = "STUB: not implemented"
+	return *new(jwt.TokenExtractor)
 }
